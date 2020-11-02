@@ -84,14 +84,12 @@ sudo -u $USER mkdir -p /home/$USER/.config/ranger/plugins
 sudo -u $USER git clone https://github.com/ppablocruzcobas/NVim-Config.git /home/$USER/.config/nvim
 sudo -u $USER git clone https://github.com/ppablocruzcobas/Dotfiles
 
-cd Dotfiles/
-sudo -u $USER mv zshrc /home/$USER/.zshrc
-sudo -u $USER mv alacritty.yml /home/$USER/.config/alacritty/
-sudo -u $USER mv albert.conf /home/$USER/.config/albert/
-sudo -u $USER mv mpd.conf /home/$USER/.config/mpd/
-sudo -u $USER mv autoload.lua /home/$USER/.config/alacritty/
-sudo -u $USER mv auto-save-state.lua /home/$USER/.config/mpv/scripts/
-sudo -u $USER mv alacritty.yml /home/$USER/.config/mpv/scripts/
+sudo -u $USER mv Dotfiles/zshrc /home/$USER/.zshrc
+sudo -u $USER mv Dotfiles/alacritty.yml /home/$USER/.config/alacritty/
+sudo -u $USER mv Dotfiles/albert.conf /home/$USER/.config/albert/
+sudo -u $USER mv Dotfiles/mpd.conf /home/$USER/.config/mpd/
+sudo -u $USER mv Dotfiles/autoload.lua /home/$USER/.config/mpv/scripts/
+sudo -u $USER mv Dotfiles/auto-save-state.lua /home/$USER/.config/mpv/scripts/
 sudo -u $USER mv ncmpcpp /home/$USER/.ncmpcpp/config
 sudo -u $USER mv rc.conf /home/$USER/.config/ranger/
 sudo -u $USER mv config.py /home/$USER/.config/qutebrowser/
@@ -101,5 +99,4 @@ sudo -u $USER mv i3status-top.toml /home/$USER/.config/.i3/
 sudo -u $USER mv -r scripts/ /home/$USER/.config/.i3/
 rm -Rf Dotfiles/
 
-cd /home/$USER/.config/ranger/plugins
-sudo -u $USER git clone https://github.com/alexanderjeurissen/ranger_devicons
+sudo -u $USER git clone https://github.com/alexanderjeurissen/ranger_devicons/home /$USER/.config/ranger/plugins
