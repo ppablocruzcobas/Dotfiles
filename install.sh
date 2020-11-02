@@ -78,6 +78,7 @@ sudo -u $USER mkdir /home/$USER/.config/mpd
 sudo -u $USER mkdir -p /home/$USER/.config/nvim/autoload
 sudo -u $USER mkdir -p /home/$USER/.config/mpv/scripts
 sudo -u $USER mkdir -p /home/$USER/.config/i3/scripts
+sudo -u $USER mkdir -p /home/$USER/.config/ranger/plugins
 
 
 sudo -u $USER git clone https://github.com/ppablocruzcobas/NVim-Config.git /home/$USER/.config/nvim
@@ -92,8 +93,13 @@ sudo -u $USER mv autoload.lua /home/$USER/.config/alacritty/
 sudo -u $USER mv auto-save-state.lua /home/$USER/.config/mpv/scripts/
 sudo -u $USER mv alacritty.yml /home/$USER/.config/mpv/scripts/
 sudo -u $USER mv ncmpcpp /home/$USER/.ncmpcpp/config
+sudo -u $USER mv rc.conf /home/$USER/.config/ranger/
+sudo -u $USER mv config.py /home/$USER/.config/qutebrowser/
 sudo -u $USER mv i3 /home/$USER/.config/.i3/config
 sudo -u $USER mv app-icons.json /home/$USER/.config/.i3/
 sudo -u $USER mv i3status-top.toml /home/$USER/.config/.i3/
 sudo -u $USER mv -r scripts/ /home/$USER/.config/.i3/
 rm -Rf Dotfiles/
+
+cd /home/$USER/.config/ranger/plugins
+sudo -u $USER git clone https://github.com/alexanderjeurissen/ranger_devicons
