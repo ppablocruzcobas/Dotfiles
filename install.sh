@@ -59,11 +59,11 @@ gem install nvim
 
 
 # AUR
-sudo -u $USER yay -S googler -needed --noconfirm
-sudo -u $USER yay -S mendeleydesktop-bundled -needed --noconfirm
-sudo -u $USER yay -S mpdris2 -needed --noconfirm
-sudo -u $USER yay -S stockfish -needed --noconfirm
-sudo -u $USER yay -S zeal -needed --noconfirm
+sudo -u $USER yay -S googler --needed --noconfirm
+sudo -u $USER yay -S mendeleydesktop-bundled --needed --noconfirm
+sudo -u $USER yay -S mpdris2 --needed --noconfirm
+sudo -u $USER yay -S stockfish --needed --noconfirm
+sudo -u $USER yay -S zeal --needed --noconfirm
 
 
 # oh-my-zsh
