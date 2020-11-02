@@ -1,0 +1,123 @@
+[theme]
+# plain, solarized-(dark|light), slick, modern, bad-wolf, gruvbox-(dark|light), space-villain
+name = "solarized-dark"
+[theme.overrides]
+separator = ""
+
+[icons]
+# none, awesome, awesome5, material
+name = "awesome"
+[icons.overrides]
+backlight_full = " \uf042 "
+backlight_partial1 = " \uf042 "
+backlight_partial2 = " \uf042 "
+backlight_partial3 = " \uf042 "
+power-off = " \uf011 "
+calendar = " \uf133 "
+
+# [[block]]
+# block = "nvidia_gpu"
+# label = ""
+# show_utilization = false
+# show_memory = false
+# interval = 5
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 2
+format = "{average}°C"
+chip = "*-isa-*"
+
+[[block]]
+info = 30
+block = "cpu"
+interval = 2
+format = "{utilization}%"
+per_core = false
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+clickable = false
+interval = 2
+
+# [[block]]
+# block = "custom"
+# on_click = "sh i3-sensible-terminal -e neomutt"
+# command = "sh ~/.config/i3/scripts/notmuch.sh"
+# json = true
+# interval = 300
+
+[[block]]
+block = "pacman"
+interval = 86400
+format = "{pacman}"
+format_singular = "{pacman}"
+format_up_to_date = "0"
+critical_updates_regex = "(linux |linux-lts|linux-zen)"
+
+# [[block]]
+# block = "custom"
+# command = "sh ~/.config/i3/scripts/network-traffic-down.sh"
+# json = true
+# interval = 1
+
+# [[block]]
+# block = "custom"
+# command = "sh ~/.config/i3/scripts/network-traffic-up.sh"
+# json = true
+# interval = 1
+
+# [[block]]
+# block = "custom"
+# # on_click = "sh nm-connection-editor -s"
+# command = "sh ~/.config/i3/scripts/check-network.sh"
+# json = true
+# interval = 5
+
+[[block]]
+block = "music"
+buttons = ["play"]
+max_width = 21
+# smart_trim = true
+# player = "audacious"
+
+[[block]]
+block = "sound"
+on_click = "pavucontrol"
+[block.mappings]
+"alsa_output.usb-Harman_Multimedia_JBL_Pebbles_1.0.0-00.analog-stereo" = "🔈"
+"alsa_output.pci-0000_00_1b.0.analog-stereo" = "🎧"
+
+[[block]]
+block = "backlight"
+
+# [[block]]
+# block = "bluetooth"
+# mac = "F4:BF:80:6B:E1:4A"
+
+[[block]]
+block = "custom"
+on_click = "exec blueman-manager"
+command = "sh ~/.config/i3/scripts/bluetoothctl.sh"
+json = true
+interval = 12
+
+[[block]]
+block = "custom"
+on_click = "sh ~/.config/i3/scripts/popup-calendar-click.sh"
+command = "sh ~/.config/i3/scripts/popup-calendar.sh"
+json = true
+interval = 60
+
+# [[block]]
+# block = "custom"
+# on_click = "sh ~/.config/i3/scripts/logout-menu.sh"
+# command = "echo '{\"icon\":\"power-off\", \"state\":\"Critical\", \"text\":\"\"}'"
+# json = true
+# interval = "once"
+
+# [[block]]
+# block = "kdeconnect"
