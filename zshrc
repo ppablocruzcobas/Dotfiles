@@ -1,8 +1,15 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Set name of the theme to load --- if set to "random", it will    
 # load a random theme each time oh-my-zsh is loaded, in which case,    
 # to know which specific one was loaded, run: echo $RANDOM_THEME    
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes    
-ZSH_THEME="gnzh"
+# ZSH_THEME="gnzh"
 
 
 # ====================
@@ -97,9 +104,9 @@ source /usr/share/zsh/manjaro-zsh-config
 source /usr/share/zsh/manjaro-zsh-prompt
 
 
-# ZSH_AUTOSUGGEST_STRATEGY=(history completion) 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion) 
     
-# Enable highlighters    
+# Enable highlighters
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(brackets cursor line main pattern root)
 
 typeset -A ZSH_HIGHLIGHT_STYLES
@@ -175,6 +182,7 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 )
 
+
 # ======================================
 # ===   Execute initializaion        ===
 # ===   Needs to be after 'plugins'  ===
@@ -182,7 +190,7 @@ zsh-syntax-highlighting
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 # Load completion.
-# autoload -U compinit && compinit
+autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
@@ -266,6 +274,5 @@ codi() {
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme

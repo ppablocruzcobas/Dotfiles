@@ -85,6 +85,7 @@ sudo -u $USER git clone https://github.com/ppablocruzcobas/NVim-Config.git /home
 sudo -u $USER git clone https://github.com/ppablocruzcobas/Dotfiles
 
 sudo -u $USER mv Dotfiles/zshrc /home/$USER/.zshrc
+sudo -u $USER mv Dotfiles/p10k /home/$USER/.p10k.zsh
 sudo -u $USER mv Dotfiles/alacritty.yml /home/$USER/.config/alacritty/
 sudo -u $USER mv Dotfiles/albert.conf /home/$USER/.config/albert/
 sudo -u $USER mv Dotfiles/mpd.conf /home/$USER/.config/mpd/
