@@ -68,8 +68,9 @@ sudo -u $USER yay -S zeal --needed --noconfirm
 
 # oh-my-zsh
 sudo -u $USER sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sudo -u $USER ln -s /usr/share/zsh/plugins/zsh-syntax-highlighting/ /home/$USER/.oh-my-zsh/custom/plugins/
-sudo -u $USER ln -s /usr/share/zsh/plugins/zsh-autosuggestions/ /home/$USER/.oh-my-zsh/custom/plugins/
+sudo -u $USER cp -r /usr/share/zsh/plugins/zsh-syntax-highlighting/ /home/$USER/.oh-my-zsh/custom/plugins/
+sudo -u $USER cp -r /usr/share/zsh/plugins/zsh-autosuggestions/ /home/$USER/.oh-my-zsh/custom/plugins/
+sudo -u $USER git clone https://github.com/ztNFny/zsh-autocomplete .oh-my-zsh/custom/plugins/
 
 sudo -u $USER mkdir /home/$USER/.ncmpcpp
 sudo -u $USER mkdir /home/$USER/.config/alacritty
@@ -101,3 +102,10 @@ sudo -u $USER mv -r scripts/ /home/$USER/.config/.i3/
 rm -Rf Dotfiles/
 
 sudo -u $USER git clone https://github.com/alexanderjeurissen/ranger_devicons/home /$USER/.config/ranger/plugins
+sudo -u $USER git clone https://github.com/sharat87/zsh-vim-mode /$USER/.config/ranger/plugins
+sudo -u $USER git clone https://github.com/rapgenic/zsh-git-complete-urls /$USER/.config/ranger/plugins
+
+sudo -u $USER git clone https://github.com/ascii-soup/zsh-url-highlighter
+sudo -u $USER mv zsh-url-highlighter/url/ /$USER/.config/ranger/plugins/zsh-syntax-highlighting/highlighters
+rm -Rf zsh-url-highlighter/
+sudo -u $USER git clone https://github.com/MichaelAquilina/zsh-you-should-use /$USER/.config/ranger/plugins/you-sould-use
