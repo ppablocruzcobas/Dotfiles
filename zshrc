@@ -99,15 +99,19 @@ HIST_STAMPS="%m.%d.%y  %T"
 # ===   Completion and Highlight styles    ===
 # ============================================
 
+zstyle ':autocomplete:list-choices:*' max-lines 40%
+zstyle ':autocomplete:*' groups always
+zstyle ':autocomplete:space:*' magic correct-word expand-history
+zstyle ':autocomplete:tab:*' completion cycle
 
 source /usr/share/zsh/manjaro-zsh-config
 source /usr/share/zsh/manjaro-zsh-prompt
 
-
-ZSH_AUTOSUGGEST_STRATEGY=(history completion) 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     
 # Enable highlighters
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(brackets cursor line main pattern root)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(brackets cursor line main pattern root url)
+ZSH_HIGHLIGHT_URL_HIGHLIGHTER_TIMEOUT=1
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 
@@ -176,10 +180,13 @@ ufw
 urltools
 web-search
 z
-fancy-ctrl-z
 per-directory-history
-zsh-autosuggestions
 zsh-syntax-highlighting
+zsh-autosuggestions
+zsh-autocomplete
+zsh-vim-mode
+you-should-use
+fancy-ctrl-z
 )
 
 
@@ -190,7 +197,7 @@ zsh-syntax-highlighting
 
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 # Load completion.
-autoload -U compinit && compinit
+# autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 

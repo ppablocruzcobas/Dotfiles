@@ -70,7 +70,12 @@ sudo -u $USER yay -S zeal --needed --noconfirm
 sudo -u $USER sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo -u $USER cp -r /usr/share/zsh/plugins/zsh-syntax-highlighting/ /home/$USER/.oh-my-zsh/custom/plugins/
 sudo -u $USER cp -r /usr/share/zsh/plugins/zsh-autosuggestions/ /home/$USER/.oh-my-zsh/custom/plugins/
-sudo -u $USER git clone https://github.com/ztNFny/zsh-autocomplete .oh-my-zsh/custom/plugins/
+sudo -u $USER git clone https://github.com/ztNFny/zsh-autocomplete /home/$USER/.oh-my-zsh/custom/plugins/
+sudo -u $USER git clone https://github.com/sharat87/zsh-vim-mode /home/$USER/.oh-my-zsh/custom/plugins
+sudo -u $USER git clone https://github.com/ascii-soup/zsh-url-highlighter
+sudo -u $USER mv zsh-url-highlighter/url/ /home/$USER/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
+rm -Rf zsh-url-highlighter/
+sudo -u $USER git clone https://github.com/MichaelAquilina/zsh-you-should-use /home/$USER/.oh-my-zsh/custom/plugins/you-sould-use
 
 sudo -u $USER mkdir /home/$USER/.ncmpcpp
 sudo -u $USER mkdir /home/$USER/.config/alacritty
@@ -101,11 +106,20 @@ sudo -u $USER mv i3status-top.toml /home/$USER/.config/.i3/
 sudo -u $USER mv -r scripts/ /home/$USER/.config/.i3/
 rm -Rf Dotfiles/
 
-sudo -u $USER git clone https://github.com/alexanderjeurissen/ranger_devicons/home /$USER/.config/ranger/plugins
-sudo -u $USER git clone https://github.com/sharat87/zsh-vim-mode /$USER/.config/ranger/plugins
-sudo -u $USER git clone https://github.com/rapgenic/zsh-git-complete-urls /$USER/.config/ranger/plugins
+sudo -u $USER git clone https://github.com/alexanderjeurissen/ranger_devicons /home/$USER/.config/ranger/plugins
 
-sudo -u $USER git clone https://github.com/ascii-soup/zsh-url-highlighter
-sudo -u $USER mv zsh-url-highlighter/url/ /$USER/.config/ranger/plugins/zsh-syntax-highlighting/highlighters
-rm -Rf zsh-url-highlighter/
-sudo -u $USER git clone https://github.com/MichaelAquilina/zsh-you-should-use /$USER/.config/ranger/plugins/you-sould-use
+
+CUTILS_VERSION=8.32
+
+wget -qc http://ftp.gnu.org/gnu/coreutils/coreutils-$CUTILS_VERSION.tar.xz
+tar -xJf coreutils-$CUTILS_VERSION.tar.xz
+rm -f coreutils-$CUTILS_VERSION.tar.xz
+
+cd coreutils-$CUTILS_VERSION/
+wget -qc https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-$CUTILS_VERSION.patch
+patch -p1 -i advcpmv-0.8-$CUTILS_VERSION.patch
+./configure
+make
+
+sh -c 'mv -vf src/cp /usr/bin/cp; cp -vf src/mv /usr/bin/mv'
+cd ../ && rm -rf coreutils-$CUTILS_VERSION/
