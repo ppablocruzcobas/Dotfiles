@@ -129,3 +129,6 @@ make
 
 sh -c 'mv -vf src/cp /usr/bin/cp; cp -vf src/mv /usr/bin/mv'
 cd ../ && rm -rf coreutils-$CUTILS_VERSION/
+
+sudo -u $USER curl https://cht.sh/:cht.sh > /home/$USER/.local/bin/cht.sh
+chmod a+x /home/$USER/.local/bin/cht.sh
