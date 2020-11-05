@@ -67,17 +67,15 @@ sudo -u $USER yay -S mpdris2 --needed --noconfirm
 sudo -u $USER yay -S stockfish --needed --noconfirm
 sudo -u $USER yay -S zeal --needed --noconfirm
 
-
 # oh-my-zsh
 sudo -u $USER sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sudo -u $USER cp -r /usr/share/zsh/plugins/zsh-syntax-highlighting/ /home/$USER/.oh-my-zsh/custom/plugins/
-sudo -u $USER cp -r /usr/share/zsh/plugins/zsh-autosuggestions/ /home/$USER/.oh-my-zsh/custom/plugins/
-sudo -u $USER git clone https://github.com/ztNFny/zsh-autocomplete /home/$USER/.oh-my-zsh/custom/plugins/
-sudo -u $USER git clone https://github.com/sharat87/zsh-vim-mode /home/$USER/.oh-my-zsh/custom/plugins
-sudo -u $USER git clone https://github.com/ascii-soup/zsh-url-highlighter
-sudo -u $USER mv zsh-url-highlighter/url/ /home/$USER/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
+sudo -u $USER git clone https://github.com/MichaelAquilina/zsh-you-should-use /home/$USER/.oh-my-zsh/custom/plugins/
+sudo -u $USER git clone https://github.com/rapgenic/zsh-git-complete-urls /home/$USER/.oh-my-zsh/custom/plugins/
+sudo -u $USER git clone https://github.com/softmoth/zsh-vim-mode /home/$USER/.oh-my-zsh/custom/plugins/
+sudo -u $USER git clone https://github.com/marlonrichert/zsh-autocomplete /home/$USER/.oh-my-zsh/custom/plugins/
+git clone https://github.com/ascii-soup/zsh-url-highlighter
+mv zsh-url-highlighter/url/ /usr/share/zsh/plugins/zsh-syntax-highlighting/highlighters
 rm -Rf zsh-url-highlighter/
-sudo -u $USER git clone https://github.com/MichaelAquilina/zsh-you-should-use /home/$USER/.oh-my-zsh/custom/plugins/you-sould-use
 
 sudo -u $USER mkdir /home/$USER/.ncmpcpp
 sudo -u $USER mkdir /home/$USER/.config/alacritty
