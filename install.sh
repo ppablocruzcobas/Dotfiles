@@ -46,6 +46,8 @@ sudo -u $USER pip3 install --user --upgrade secrets requests googler cookiecutte
 sudo -u $USER pip3 install i3-instant-layout autotiling i3-workspace-names-daemon
 # neovim connectors
 sudo -u $USER pip3 install pynvim neovim-remote
+# extras...
+sudo -u $USER pip3 install subliminal ffsubsync
 
 
 # NPM
@@ -95,8 +97,6 @@ sudo -u $USER mv Dotfiles/p10k /home/$USER/.p10k.zsh
 sudo -u $USER mv Dotfiles/alacritty.yml /home/$USER/.config/alacritty/
 sudo -u $USER mv Dotfiles/albert.conf /home/$USER/.config/albert/
 sudo -u $USER mv Dotfiles/mpd.conf /home/$USER/.config/mpd/
-sudo -u $USER mv Dotfiles/autoload.lua /home/$USER/.config/mpv/scripts/
-sudo -u $USER mv Dotfiles/auto-save-state.lua /home/$USER/.config/mpv/scripts/
 sudo -u $USER mv ncmpcpp /home/$USER/.ncmpcpp/config
 sudo -u $USER mv rc.conf /home/$USER/.config/ranger/
 sudo -u $USER mv config.py /home/$USER/.config/qutebrowser/
@@ -108,6 +108,14 @@ rm -Rf Dotfiles/
 
 sudo -u $USER git clone https://github.com/alexanderjeurissen/ranger_devicons /home/$USER/.config/ranger/plugins
 
+cd /home/$USER/.config/mpv/scripts/
+sudo -u $USER wget -c https://github.com/kelciour/mpv-scripts/blob/master/sub-search.lua
+sudo -u $USER wget -c https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua
+sudo -u $USER wget -c https://github.com/AN3223/dotfiles/raw/master/.config/mpv/scripts/auto-save-state.lua
+sudo -u $USER wget -c https://github.com/kelciour/mpv-scripts/raw/master/sub-cut.lua
+sudo -u $USER wget -c https://github.com/vayan/autosub-mpv/raw/master/autosub.lua
+sudo -u $USER wget -c https://github.com/joaquintorres/autosubsync-mpv/raw/master/autosubsync.lua
+cd /home/$USER
 
 CUTILS_VERSION=8.32
 
