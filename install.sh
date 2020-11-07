@@ -15,7 +15,7 @@ pacman -Syu --needed --noconfirm
 pacman -S yay
 
 # utils installations...
-pacman -S expac nmap npm tldr units ruby rubygems ncdu --needed --noconfirm
+pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher tensorboard --needed --noconfirm
 # lts installations...
 pacman -S clang ctags bash-language-server autopep8 
 # multimedia installations...
@@ -29,13 +29,15 @@ pacman -S r gnuplot jupyter jupyterlab --needed --noconfirm
 # fonts installations...
 pacman -S powerline-fonts ttf-font-awesome ttf-nerd-fonts-symbols ttf-inconsolata awesome-terminal-fonts --needed --noconfirm
 # python installations...
-pacman -S python-pip python-matplotlib python-scipy python-pyopenssl tk --needed --noconfirm
+pacman -S python-pip python-matplotlib python-scipy python-pyopenssl tk python-seaborn python-tensorflow --needed --noconfirm
 # latex installations...
 pacman -S texlive-bin texlive-latexextra texlive-science --needed --noconfirm
 # terminal installations...
 pacman -S alacritty neovim mc htop git ranger fzf manjaro-zsh-config zsh zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k --needed --noconfirm
 # game installations...
 pacman -S pychess gnugo --needed --noconfirm
+# libreoffice fresh branch...
+pacman -S libreoffice-fresh --needed --noconfirm
 
 
 # PIP
@@ -53,11 +55,13 @@ sudo -u $USER pip3 install subliminal ffsubsync
 # NPM
 npm i -g flow-language-server
 npm i -g neovim
+npm i -g create-react-app
 
 
 # GEM
 gem install colorls
 gem install nvim
+gem install solargraph
 
 
 # AUR
@@ -66,6 +70,7 @@ sudo -u $USER yay -S mendeleydesktop-bundled --needed --noconfirm
 sudo -u $USER yay -S mpdris2 --needed --noconfirm
 sudo -u $USER yay -S stockfish --needed --noconfirm
 sudo -u $USER yay -S zeal --needed --noconfirm
+sudo -u $USER yay -S lazygit --needed --noconfirm
 
 # oh-my-zsh
 sudo -u $USER sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
