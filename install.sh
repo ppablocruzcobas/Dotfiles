@@ -71,6 +71,7 @@ sudo -u $USER yay -S mpdris2 --needed --noconfirm
 sudo -u $USER yay -S stockfish --needed --noconfirm
 sudo -u $USER yay -S zeal --needed --noconfirm
 sudo -u $USER yay -S lazygit --needed --noconfirm
+sudo -u $USER yay -S beamerpresenter --needed --noconfirm
 
 # oh-my-zsh
 sudo -u $USER sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -100,13 +101,14 @@ sudo -u $USER mv Dotfiles/p10k /home/$USER/.p10k.zsh
 sudo -u $USER mv Dotfiles/alacritty.yml /home/$USER/.config/alacritty/
 sudo -u $USER mv Dotfiles/albert.conf /home/$USER/.config/albert/
 sudo -u $USER mv Dotfiles/mpd.conf /home/$USER/.config/mpd/
-sudo -u $USER mv ncmpcpp /home/$USER/.ncmpcpp/config
-sudo -u $USER mv rc.conf /home/$USER/.config/ranger/
-sudo -u $USER mv config.py /home/$USER/.config/qutebrowser/
-sudo -u $USER mv i3 /home/$USER/.config/.i3/config
-sudo -u $USER mv app-icons.json /home/$USER/.config/.i3/
-sudo -u $USER mv i3status-top.toml /home/$USER/.config/.i3/
-sudo -u $USER mv -r scripts/ /home/$USER/.config/.i3/
+sudo -u $USER mv Dotfiles/ncmpcpp /home/$USER/.ncmpcpp/config
+sudo -u $USER mv Dotfiles/rc.conf /home/$USER/.config/ranger/
+sudo -u $USER mv Dotfiles/config.py /home/$USER/.config/qutebrowser/
+sudo -u $USER mv Dotfiles/i3 /home/$USER/.config/.i3/config
+sudo -u $USER mv Dotfiles/app-icons.json /home/$USER/.config/.i3/
+sudo -u $USER mv Dotfiles/i3status-top.toml /home/$USER/.config/.i3/
+sudo -u $USER mv -r Dotfiles/scripts/ /home/$USER/.config/.i3/
+sudo -u $USER mv Dotfiles/snippets.fzf /home/$USER/.snippets.fzf
 rm -Rf Dotfiles/
 
 sudo -u $USER git clone https://github.com/alexanderjeurissen/ranger_devicons /home/$USER/.config/ranger/plugins
