@@ -15,9 +15,11 @@ pacman -Syu --needed --noconfirm
 pacman -S yay
 
 # utils installations...
-pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher tensorboard --needed --noconfirm
+pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher rlwrap irssi remind tensorboard upx --needed --noconfirm
 # lts installations...
-pacman -S clang ctags bash-language-server autopep8 
+pacman -S clang ctags bash-language-server autopep8 --needed --noconfirm
+# mail installations...
+pacman -S neomutt pass mailcap --needed --noconfirm
 # multimedia installations...
 pacman -S mpv mpd ncmpcpp playerctl youtube-dl ueberzug --needed --noconfirm
 # i3 installation...
@@ -33,7 +35,7 @@ pacman -S python-pip python-matplotlib python-scipy python-pyopenssl tk python-s
 # latex installations...
 pacman -S texlive-bin texlive-latexextra texlive-science --needed --noconfirm
 # terminal installations...
-pacman -S alacritty neovim mc htop git ranger fzf manjaro-zsh-config zsh zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k --needed --noconfirm
+pacman -S alacritty neovim mc htop git ranger fzf manjaro-zsh-config zsh zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k byobu --needed --noconfirm
 # game installations...
 pacman -S pychess gnugo --needed --noconfirm
 # libreoffice fresh branch...
@@ -50,6 +52,8 @@ sudo -u $USER pip3 install i3-instant-layout autotiling i3-workspace-names-daemo
 sudo -u $USER pip3 install pynvim neovim-remote
 # extras...
 sudo -u $USER pip3 install subliminal ffsubsync
+# standalone executables...
+sudo -u $USER pip3 install pyinstaller 
 
 
 # NPM
@@ -72,6 +76,7 @@ sudo -u $USER yay -S stockfish --needed --noconfirm
 sudo -u $USER yay -S zeal --needed --noconfirm
 sudo -u $USER yay -S lazygit --needed --noconfirm
 sudo -u $USER yay -S beamerpresenter --needed --noconfirm
+sudo -u $USER yay -S tcllib --needed --noconfirm
 
 # oh-my-zsh
 sudo -u $USER sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
