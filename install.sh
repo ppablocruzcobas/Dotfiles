@@ -47,7 +47,7 @@ pacman -S libreoffice-fresh --needed --noconfirm
 sudo -u $USER pip3 install pycountry tzlocal pytz colour fuzzywuzzy lxml clipboard
 sudo -u $USER pip3 install --user --upgrade secrets requests googler cookiecutter
 # i3 additional programs
-sudo -u $USER pip3 install i3-instant-layout autotiling i3-workspace-names-daemon
+sudo -u $USER pip3 install autotiling i3-workspace-names-daemon
 # neovim connectors
 sudo -u $USER pip3 install pynvim neovim-remote
 # extras...

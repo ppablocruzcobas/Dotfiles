@@ -55,6 +55,7 @@ zinit light Aloxaf/fzf-tab
 zinit light MichaelAquilina/zsh-you-should-use
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-history-substring-search
 zinit light softmoth/zsh-vim-mode
 zinit light jimhester/per-directory-history
 
@@ -77,6 +78,7 @@ zinit snippet OMZP::git-extras
 zinit snippet OMZP::history
 zinit snippet OMZP::man
 zinit snippet OMZP::nmap
+zinit snippet OMZP::pip
 zinit snippet OMZP::sudo
 zinit snippet OMZP::urltools
 
@@ -103,7 +105,7 @@ export PATH=$HOME/.gem/ruby/2.7.0/bin:$PATH
 autoload -U colors && colors
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
 
-ZSH_AUTOSUGGEST_STRATEGY=(completion history) 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     
 # Enable highlighters
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(brackets cursor line main pattern root)
@@ -166,11 +168,11 @@ manydots-magic
 # =============================
 
 alias top='htop --user=$USER'
+alias free='free -m'
 alias mc='mc -u'
 alias ncdu='ncdu --color dark'
 alias nvim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim"
 alias vim='nvim'
-alias mutt='neomutt'
 alias mkdir='mkdir -p'
 alias cert='openssl s_client -showcerts -connect $1:$2'
 
