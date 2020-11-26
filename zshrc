@@ -28,39 +28,59 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+
+# ====================
+# ===   Configs    ===
+# ====================
+
 # Theme
 zinit ice depth=1; zinit light romkatv/powerlevel10k
+
 
 # ====================
 # ===   Plugins    ===
 # ====================
 
+zinit ice lucid nocompile wait'0e' nocompletions
+zinit load MenkeTechnologies/zsh-more-completions
+
+autoload -Uz compinit
+compinit -c
+
+zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
+zinit light softmoth/zsh-vim-mode
 
-zinit snippet OMZL::history.zsh
+zinit snippet OMZL::directories.zsh
 zinit snippet OMZL::git.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::theme-and-appearance.zsh
 
-zinit snippet OMZP::autojump
-zinit snippet OMZP::history
-zinit snippet OMZP::fzf
-zinit snippet OMZP::extract
-zinit snippet OMZP::colorize
 zinit snippet OMZP::archlinux
+zinit snippet OMZP::autojump
+zinit snippet OMZP::bgnotify
+zinit snippet OMZP::colored-man-pages
+zinit snippet OMZP::colorize
+zinit snippet OMZP::common-aliases
+zinit snippet OMZP::extract
+zinit snippet OMZP::fancy-ctrl-z
+zinit snippet OMZP::fzf
 zinit snippet OMZP::git
 zinit snippet OMZP::git-extras
-zinit snippet OMZP::fancy-ctrl-z
-zinit snippet OMZP::sudo
+zinit snippet OMZP::history
+zinit snippet OMZP::man
 zinit snippet OMZP::nmap
-zinit snippet OMZP::bgnotify
-zinit snippet OMZP::common-aliases
+zinit snippet OMZP::sudo
 zinit snippet OMZP::urltools
 
 zinit light wfxr/forgit
+zinit light hlissner/zsh-autopair
 
 # ====================
 # ===   Exports    ===
 # ====================
+
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -117,13 +137,17 @@ source $HOME/.snippets.fzf
 # ===   Needs to be after 'plugins'  ===
 # ======================================
 
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Initialize completion
-# autoload -Uz compinit
-# compinit -c
+source ~/.local/bin/manydots-magic
+autoload -Uz manydots-magic
+manydots-magic
+
 
 # =============================
 # ===   Personal Aliases    ===
@@ -151,3 +175,24 @@ alias cat='bat'
 
 alias virtual='python3 -m venv .venv'
 alias activate='source .venv/bin/activate'
+
+
+# =======================================
+# ===   Copy / Paste using vi style   ===
+# =======================================
+
+yanktoclipboard() {
+    echo $BUFFER | xsel -i -b
+}
+
+pastefromclipboard() {
+    RBUFFER=$(xsel -o -b </dev/null)$RBUFFER
+}
+
+zle -N yanktoclipboard
+zle -N pastefromclipboard
+
+bindkey -a 'yy' yanktoclipboard
+bindkey -a 'p' pastefromclipboard
+
+enable-fzf-tab
