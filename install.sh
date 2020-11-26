@@ -15,7 +15,7 @@ pacman -Syu --needed --noconfirm
 pacman -S yay
 
 # utils installations...
-pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher rlwrap irssi remind tensorboard upx --needed --noconfirm
+pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher rlwrap irssi remind tensorboard upx bat --needed --noconfirm
 # lts installations...
 pacman -S clang ctags bash-language-server autopep8 --needed --noconfirm
 # mail installations...
@@ -35,7 +35,7 @@ pacman -S python-pip python-matplotlib python-scipy python-pyopenssl tk python-s
 # latex installations...
 pacman -S texlive-bin texlive-latexextra texlive-science --needed --noconfirm
 # terminal installations...
-pacman -S alacritty neovim mc htop git ranger fzf manjaro-zsh-config zsh zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k byobu --needed --noconfirm
+pacman -S alacritty neovim mc htop git ranger fzf zsh tmux --needed --noconfirm
 # game installations...
 pacman -S pychess gnugo --needed --noconfirm
 # libreoffice fresh branch...
@@ -78,15 +78,8 @@ sudo -u $USER yay -S lazygit --needed --noconfirm
 sudo -u $USER yay -S beamerpresenter --needed --noconfirm
 sudo -u $USER yay -S tcllib --needed --noconfirm
 
-# oh-my-zsh
-sudo -u $USER sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sudo -u $USER git clone https://github.com/MichaelAquilina/zsh-you-should-use /home/$USER/.oh-my-zsh/custom/plugins/
-sudo -u $USER git clone https://github.com/rapgenic/zsh-git-complete-urls /home/$USER/.oh-my-zsh/custom/plugins/
-sudo -u $USER git clone https://github.com/softmoth/zsh-vim-mode /home/$USER/.oh-my-zsh/custom/plugins/
-sudo -u $USER git clone https://github.com/marlonrichert/zsh-autocomplete /home/$USER/.oh-my-zsh/custom/plugins/
-git clone https://github.com/ascii-soup/zsh-url-highlighter
-mv zsh-url-highlighter/url/ /usr/share/zsh/plugins/zsh-syntax-highlighting/highlighters
-rm -Rf zsh-url-highlighter/
+# zinit
+sudo -u $USERsh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
 sudo -u $USER mkdir /home/$USER/.ncmpcpp
 sudo -u $USER mkdir /home/$USER/.config/alacritty
