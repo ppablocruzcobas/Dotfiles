@@ -44,6 +44,10 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit ice lucid nocompile wait'0e' nocompletions
 zinit load MenkeTechnologies/zsh-more-completions
 
+setopt correct
+setopt correct_all
+setopt extendedglob
+
 autoload -Uz compinit
 compinit -c
 
@@ -96,6 +100,9 @@ export PATH=$HOME/.gem/ruby/2.7.0/bin:$PATH
 # ===   Completion and Highlight styles    ===
 # ============================================
 
+autoload -U colors && colors
+export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (Yes, No, Abort, Edit) "
+
 ZSH_AUTOSUGGEST_STRATEGY=(completion history) 
     
 # Enable highlighters
@@ -141,6 +148,9 @@ source $HOME/.snippets.fzf
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:*' continuous-trigger '/'
+zstyle ':completion:*:descriptions' format
+zstyle ':fzf-tab:*' show-group full
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
