@@ -137,3 +137,16 @@ cd ../ && rm -rf coreutils-$CUTILS_VERSION/
 
 sudo -u $USER curl https://cht.sh/:cht.sh > /home/$USER/.local/bin/cht.sh
 chmod a+x /home/$USER/.local/bin/cht.sh
+
+sudo -u $USER git clone https://github.com/zunit-zsh/zunit
+cd ./zunit
+sudo -u $USER ./build.zsh
+chmod u+x ./zunit
+sudo -u $USER cp ./zunit /home/$USER/.local/bin
+cd ..
+rm -Rf zunit/
+
+sudo -u $USER git clone https://github.com/molovo/revolver revolver
+chmod u+x revolver/revolver
+sudo -u $USER mv revolver/revolver /home/$USER/.local/bin
+rm -Rf revolver/

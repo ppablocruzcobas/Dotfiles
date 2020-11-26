@@ -48,9 +48,11 @@ autoload -Uz compinit
 compinit -c
 
 zinit light Aloxaf/fzf-tab
+zinit light MichaelAquilina/zsh-you-should-use
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light softmoth/zsh-vim-mode
+zinit light jimhester/per-directory-history
 
 zinit snippet OMZL::directories.zsh
 zinit snippet OMZL::git.zsh
