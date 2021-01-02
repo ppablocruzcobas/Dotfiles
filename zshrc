@@ -190,10 +190,17 @@ alias cat='bat'
 alias virtual='python3 -m venv .venv'
 alias activate='source .venv/bin/activate'
 
+alias sstart='sudo systemctl start'
+alias sstop='sudo systemctl stop'
 
 # =======================================
 # ===   Copy / Paste using vi style   ===
 # =======================================
+
+recp(){
+    find $1 -name '*.$3' -exec cp -prv '{}' $2 ';'
+}
+
 
 yanktoclipboard() {
     echo $BUFFER | xsel -i -b

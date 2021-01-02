@@ -1,3 +1,5 @@
+# vi: ft=vim
+
 # Find and open files
 fo() {
   IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
@@ -9,12 +11,12 @@ fo() {
 }
 
 # Find man pages
-function fman() {
-    man -k . | fzf --exact -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
+fman() {
+    man -k . | fzf --exact -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man 
 }
 
 # Find music
-function fmpc() {
+fmpc() {
   local song_position
   song_position=$(mpc -f "%position%) %artist% - %title%" playlist | \
     fzf-tmux --query="$1" --reverse --select-1 --exit-0 | \
@@ -23,12 +25,12 @@ function fmpc() {
 }
 
 # Install packages using yay (change to pacman/AUR helper of your choice)
-function in() {
+in() {
     yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
 }
 
 # Remove installed packages (change to pacman/AUR helper of your choice)
-function re() {
+re() {
     yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
 
@@ -41,16 +43,6 @@ j() {
     cd "$(autojump -s | sort -k1gr | awk '$1 ~ /[0-9]:/ && $2 ~ /^\// { for (i=2; i<=NF; i++) { print $(i) } }' |  fzf --height 40% --reverse --inline-info)" 
 }
 
-unalias z
-z() {
-  if [[ -z "$*" ]]; then
-    cd "$(_z -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"
-  else
-    _last_z_args="$@"
-    _z "$@"
-  fi
-}
-
 fzf-locate-widget() {
   local selected
   if selected=$(locate / | fzf -q "$LBUFFER"); then
@@ -60,3 +52,4 @@ fzf-locate-widget() {
 }
 zle     -N    fzf-locate-widget
 bindkey '\ei' fzf-locate-widget
+

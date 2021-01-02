@@ -15,23 +15,23 @@ pacman -Syu --needed --noconfirm
 pacman -S yay
 
 # utils installations...
-pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher rlwrap irssi remind tensorboard upx bat --needed --noconfirm
+pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher rlwrap irssi remind upx bat tor nyx --needed --noconfirm
 # lts installations...
 pacman -S clang ctags bash-language-server autopep8 --needed --noconfirm
 # mail installations...
 pacman -S neomutt pass mailcap --needed --noconfirm
 # multimedia installations...
-pacman -S mpv mpd ncmpcpp playerctl youtube-dl ueberzug --needed --noconfirm
+pacman -S mpv mpd ncmpcpp playerctl youtube-dl ueberzug clipgrab --needed --noconfirm
 # i3 installation...
 pacman -S i3exit i3-gaps i3-lock-color i3-scrot i3-status-rust compton feh xfce4-volumed-pulse xss-lock lxappearance wmctrl xclip xsel xdotool --needed --noconfirm
 # general installation...
 pacman -S albert redshift calibre telegram-desktop simplescreenrecorder qutebrowser pdfjs zathura zathura-djvu zathura-pdf-poppler --needed --noconfirm
 # science installations...
-pacman -S r gnuplot jupyter jupyterlab --needed --noconfirm
+pacman -S r gnuplot jupyter jupyterlab graphviz --needed --noconfirm
 # fonts installations...
 pacman -S powerline-fonts ttf-font-awesome ttf-nerd-fonts-symbols ttf-inconsolata awesome-terminal-fonts --needed --noconfirm
 # python installations...
-pacman -S python-pip python-matplotlib python-scipy python-pyopenssl tk python-seaborn python-tensorflow --needed --noconfirm
+pacman -S python-pip python-matplotlib python-scipy python-pyopenssl tk python-seaborn --needed --noconfirm
 # latex installations...
 pacman -S texlive-bin texlive-latexextra texlive-science --needed --noconfirm
 # terminal installations...
@@ -53,7 +53,7 @@ sudo -u $USER pip3 install pynvim neovim-remote
 # extras...
 sudo -u $USER pip3 install subliminal ffsubsync
 # standalone executables...
-sudo -u $USER pip3 install pyinstaller 
+sudo -u $USER pip3 install pyinstaller
 
 
 # NPM
@@ -76,6 +76,9 @@ sudo -u $USER yay -S stockfish --needed --noconfirm
 sudo -u $USER yay -S zeal --needed --noconfirm
 sudo -u $USER yay -S lazygit --needed --noconfirm
 sudo -u $USER yay -S beamerpresenter --needed --noconfirm
+sudo -u $USER yay -S skypeforlinux-stable-bin --needed --noconfirm
+sudo -u $USER yay -S spotify --needed --noconfirm
+sudo -u $USER yay -S postman-bin --needed --noconfirm
 sudo -u $USER yay -S tcllib --needed --noconfirm
 
 # zinit
