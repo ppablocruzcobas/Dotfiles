@@ -54,35 +54,25 @@ interval = 2
 block = "pacman"
 interval = 86400
 format = "{pacman}"
-format_singular = "{pacman}"
 format_up_to_date = "0"
+format_singular = "{pacman}"
 critical_updates_regex = "(linux |linux-lts|linux-zen)"
+# hide_when_uptodate = true
 
 # [[block]]
-# block = "custom"
-# command = "sh ~/.config/i3/scripts/network-traffic-down.sh"
-# json = true
-# interval = 1
-
-# [[block]]
-# block = "custom"
-# command = "sh ~/.config/i3/scripts/network-traffic-up.sh"
-# json = true
-# interval = 1
-
-# [[block]]
-# block = "custom"
-# # on_click = "sh nm-connection-editor -s"
-# command = "sh ~/.config/i3/scripts/check-network.sh"
-# json = true
-# interval = 5
+# block = "net"
+# format = "{speed_down}"
+# interval = 2
+# use_bits = false
+# hide_inactive = true
+# hide_missing = true
 
 [[block]]
 block = "music"
 buttons = ["play"]
 max_width = 21
-# smart_trim = true
-# player = "audacious"
+seek_step = 5000
+hide_when_empty = true
 
 [[block]]
 block = "sound"
@@ -94,10 +84,6 @@ on_click = "pavucontrol"
 [[block]]
 block = "backlight"
 
-# [[block]]
-# block = "bluetooth"
-# mac = "F4:BF:80:6B:E1:4A"
-
 [[block]]
 block = "custom"
 on_click = "exec blueman-manager"
@@ -106,18 +92,25 @@ json = true
 interval = 12
 
 [[block]]
+block = "networkmanager"
+on_click = "networkmanager_dmenu"
+device_format = "{icon} {ap}"
+ap_format = "{ssid}"
+max_ssid_width = 6
+
+[[block]]
 block = "custom"
-on_click = "sh ~/.config/i3/scripts/popup-calendar-click.sh"
-command = "sh ~/.config/i3/scripts/popup-calendar.sh"
+# on_click = "sh ~/.config/i3/scripts/.sh"
+command = "sh ~/.config/i3/scripts/calendar.sh"
 json = true
 interval = 60
 
-# [[block]]
-# block = "custom"
-# on_click = "sh ~/.config/i3/scripts/logout-menu.sh"
-# command = "echo '{\"icon\":\"power-off\", \"state\":\"Critical\", \"text\":\"\"}'"
-# json = true
-# interval = "once"
+[[block]]
+block = "custom"
+on_click = "sh ~/.config/i3/scripts/powermenu.sh"
+command = "echo '{\"icon\":\"power-off\", \"state\":\"Idle\", \"text\":\"\"}'"
+json = true
+interval = "once"
 
 # [[block]]
 # block = "kdeconnect"

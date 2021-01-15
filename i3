@@ -38,27 +38,28 @@ for_window [class="Manjaro-hello"] floating enable
 for_window [class="Xfburn"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable
+for_window [class="Pulseeffects"] floating enable
 # for_window [class="Pamac-manager"] floating enable
 # for_window [class="libreoffice"] floating enable
 
 # Background
-exec_always --no-startup-id feh --no-fehbg --bg-fill '/usr/share/backgrounds/wallpapers-2018/palm-wave.jpg'
-# Icons on workspaces
-exec_always --no-startup-id i3-workspace-names-daemon --delimiter " " --no-match-not-show-name --uniq
-# Transfer lock to i3lock
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
+exec --no-startup-id feh --no-fehbg --bg-fill '/home/ppablocruzcobas/Pictures/Wallpapers/mojave_dynamic_12.jpg'
+
 # Automatically select best layout for new windows
-exec_always --no-startup-id autotiling
+exec --no-startup-id autotiling
+
+# Tmux...
+# exec tmux has-session -t $HOST || alacritty -e tmux new -s $HOST &
+
+# Icons on workspaces
+exec --no-startup-id i3-workspace-names-daemon --delimiter " " --no-match-not-show-name --uniq
 
 # Composition
-exec_always --no-startup-id picom
+exec --no-startup-id picom
 
 # Launcher
-exec_always --no-startup-id albert
+exec --no-startup-id albert
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec_always --no-startup-id nm-applet
 # Redlight at night
 exec --no-startup-id redshift
 
@@ -67,9 +68,10 @@ exec --no-startup-id thunar --daemon
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed-pulse
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
 exec --no-startup-id mpd
 exec --no-startup-id mpDris2
+exec --no-startup-id nm-applet
 
 # Remember last visited workspace
 workspace_auto_back_and_forth yes
@@ -99,10 +101,13 @@ floating_modifier Mod1
 
 # Start a terminal
 bindsym Mod1+Return exec alacritty
+# Toggle Albert
+bindsym Mod1+F2 exec albert toggle
 
 bindsym Mod4+e exec thunar
-bindsym Mod4+w exec qutebrowser
-bindsym Mod4+t exec telegram-desktop
+bindsym Mod4+s exec qutebrowser -r accounts
+bindsym Mod4+w exec qutebrowser -r default
+bindsym Mod4+t exec /opt/tdesktop/Telegram
 # bindsym Mod4+m exec alacritty -t mutt -e neomutt
 bindsym Mod4+a exec alacritty -t ncmpcpp -e ncmpcpp
 bindsym Mod4+h exec alacritty -t htop -e htop
@@ -111,6 +116,9 @@ bindsym Mod4+c exec alacritty -t mc -e mc -u
 
 # Kill focused window
 bindsym Mod1+F4 kill
+
+# Show Exit menu
+bindsym Mod4+F4 exec ~/.config/i3/scripts/powermenu.sh
 
 # alternatively, you can use the cursor keys:
 bindsym Mod1+Left  focus left
@@ -131,8 +139,8 @@ bindsym Mod1+Shift+Up move up
 bindsym Mod1+Shift+Right move right
 
 # Lock
-bindsym Mod1+Ctrl+Delete exec i3lock-fancy
-bindsym XF86Sleep exec i3lock-fancy && echo mem > /sys/power/state
+bindsym Mod1+Ctrl+Delete exec betterlockscreen -l blur 
+bindsym XF86Sleep exec betterlockscreen -l blur && echo mem > /sys/power/state
 
 # Screenshots
 bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots/'
@@ -161,8 +169,6 @@ bindsym Mod4+Shift+Tab workspace prev
 bindsym Mod1+Tab exec i3-alt-tab --next
 bindsym Mod1+Shift+Tab exec i3-alt-tab --prev
 
-# Layouts
-bindsym Mod4+l exec i3-instant-layout --list | rofi -dmenu -i -p Layout | i3-instant-layout -
 
 # Toggle tiling / floating
 bindsym Mod1+Shift+space floating toggle
@@ -172,9 +178,6 @@ bindsym Mod1+space focus mode_toggle
 
 # Focus the parent container
 bindsym Mod1+a focus parent
-
-# Focus the child container
-bindsym Mod1+d focus child
 
 # Move the currently focused window to the scratchpad
 bindsym Mod1+Shift+minus move scratchpad
@@ -264,7 +267,7 @@ focus_follows_mouse no
 bar {
     position top
     workspace_buttons yes
-    # tray_output none
+    tray_output none
     height 28
     font pango:DejaVu Sans Mono, AwesomeFont Regular 13
     status_command /usr/bin/i3status-rs $HOME/.config/i3/i3status-top.toml

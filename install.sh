@@ -15,7 +15,7 @@ pacman -Syu --needed --noconfirm
 pacman -S yay
 
 # utils installations...
-pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher rlwrap irssi remind upx bat tor nyx --needed --noconfirm
+pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher rlwrap irssi remind upx bat tor nyx rofi yad --needed --noconfirm
 # lts installations...
 pacman -S clang ctags bash-language-server autopep8 --needed --noconfirm
 # mail installations...
@@ -23,7 +23,7 @@ pacman -S neomutt pass mailcap --needed --noconfirm
 # multimedia installations...
 pacman -S mpv mpd ncmpcpp playerctl youtube-dl ueberzug clipgrab --needed --noconfirm
 # i3 installation...
-pacman -S i3exit i3-gaps i3-lock-color i3-scrot i3-status-rust compton feh xfce4-volumed-pulse xss-lock lxappearance wmctrl xclip xsel xdotool --needed --noconfirm
+pacman -S i3exit i3-gaps i3-lock-color i3-scrot i3-status-rust compton feh xfce4-volumed-pulse lxappearance wmctrl xclip xsel xdotool --needed --noconfirm
 # general installation...
 pacman -S albert redshift calibre telegram-desktop simplescreenrecorder qutebrowser pdfjs zathura zathura-djvu zathura-pdf-poppler --needed --noconfirm
 # science installations...
@@ -54,6 +54,8 @@ sudo -u $USER pip3 install pynvim neovim-remote
 sudo -u $USER pip3 install subliminal ffsubsync
 # standalone executables...
 sudo -u $USER pip3 install pyinstaller
+# Pywal
+sudo -u $USER pip3 install pywal
 
 
 # NPM
@@ -70,6 +72,7 @@ gem install solargraph
 
 # AUR
 sudo -u $USER yay -S googler --needed --noconfirm
+sudo -u $USER yay -S klepto --needed --noconfirm
 sudo -u $USER yay -S mendeleydesktop-bundled --needed --noconfirm
 sudo -u $USER yay -S mpdris2 --needed --noconfirm
 sudo -u $USER yay -S stockfish --needed --noconfirm
@@ -80,6 +83,8 @@ sudo -u $USER yay -S skypeforlinux-stable-bin --needed --noconfirm
 sudo -u $USER yay -S spotify --needed --noconfirm
 sudo -u $USER yay -S postman-bin --needed --noconfirm
 sudo -u $USER yay -S tcllib --needed --noconfirm
+sudo -u $USER yay -S betterlockscreen --needed --noconfirm
+sudo -u $USER yay -S networkmanager-dmenu --needed --noconfirm
 
 # zinit
 sudo -u $USERsh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
@@ -92,6 +97,7 @@ sudo -u $USER mkdir -p /home/$USER/.config/nvim/autoload
 sudo -u $USER mkdir -p /home/$USER/.config/mpv/scripts
 sudo -u $USER mkdir -p /home/$USER/.config/i3/scripts
 sudo -u $USER mkdir -p /home/$USER/.config/ranger/plugins
+sudo -u $USER mkdir -p /home/$USER/.config/networkmanager-dmenu
 
 
 sudo -u $USER git clone https://github.com/ppablocruzcobas/NVim-Config.git /home/$USER/.config/nvim
@@ -101,6 +107,7 @@ sudo -u $USER mv Dotfiles/zshrc /home/$USER/.zshrc
 sudo -u $USER mv Dotfiles/p10k /home/$USER/.p10k.zsh
 sudo -u $USER mv Dotfiles/alacritty.yml /home/$USER/.config/alacritty/
 sudo -u $USER mv Dotfiles/albert.conf /home/$USER/.config/albert/
+sudo -u $USER mv Dotfiles/networkmanager-dmenu.ini /home/$USER/.config/networkmanager-dmenu/config.ini
 sudo -u $USER mv Dotfiles/mpd.conf /home/$USER/.config/mpd/
 sudo -u $USER mv Dotfiles/ncmpcpp /home/$USER/.ncmpcpp/config
 sudo -u $USER mv Dotfiles/rc.conf /home/$USER/.config/ranger/
