@@ -1,3 +1,6 @@
+# Background
+exec betterlockscreen -w
+
 # Font for window titles.
 font pango:Hack Nerd Font Bold 11
 title_align center
@@ -39,29 +42,15 @@ for_window [class="Xfburn"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable
 for_window [class="Pulseeffects"] floating enable
-# for_window [class="Pamac-manager"] floating enable
+for_window [class="Skype"] floating enable
+for_window [class="Telegram"] floating enable
 # for_window [class="libreoffice"] floating enable
-
-# Background
-exec --no-startup-id feh --no-fehbg --bg-fill '/home/ppablocruzcobas/Pictures/Wallpapers/mojave_dynamic_12.jpg'
-
-# Automatically select best layout for new windows
-exec --no-startup-id autotiling
-
-# Tmux...
-# exec tmux has-session -t $HOST || alacritty -e tmux new -s $HOST &
-
-# Icons on workspaces
-exec --no-startup-id i3-workspace-names-daemon --delimiter " " --no-match-not-show-name --uniq
-
-# Composition
-exec --no-startup-id picom
-
-# Launcher
-exec --no-startup-id albert
 
 # Redlight at night
 exec --no-startup-id redshift
+
+# Composition
+exec --no-startup-id picom
 
 # Xfce4 services...
 exec --no-startup-id thunar --daemon
@@ -72,6 +61,24 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id mpd
 exec --no-startup-id mpDris2
 exec --no-startup-id nm-applet
+
+# Launcher
+exec --no-startup-id albert
+
+# New mail notification in background...
+exec geary --gapplication-service
+
+# Automatically select best layout for new windows
+exec --no-startup-id autotiling
+
+# Tmux...
+# exec tmux has-session -t $HOST || alacritty -e tmux new -s $HOST &
+
+# Icons on workspaces
+exec --no-startup-id i3-workspace-names-daemon --delimiter " " --no-match-not-show-name --uniq
+
+# Clean common partition...
+exec ntfsfix /dev/sdc1
 
 # Remember last visited workspace
 workspace_auto_back_and_forth yes
@@ -105,10 +112,12 @@ bindsym Mod1+Return exec alacritty
 bindsym Mod1+F2 exec albert toggle
 
 bindsym Mod4+e exec thunar
-bindsym Mod4+s exec qutebrowser -r accounts
+bindsym Mod4+b exec brave
+bindsym Mod4+i exec qutebrowser -r isu
 bindsym Mod4+w exec qutebrowser -r default
 bindsym Mod4+t exec /opt/tdesktop/Telegram
-# bindsym Mod4+m exec alacritty -t mutt -e neomutt
+bindsym Mod4+s exec Skype
+bindsym Mod4+m exec geary
 bindsym Mod4+a exec alacritty -t ncmpcpp -e ncmpcpp
 bindsym Mod4+h exec alacritty -t htop -e htop
 bindsym Mod4+n exec alacritty -t nvim -e nvim
@@ -139,13 +148,13 @@ bindsym Mod1+Shift+Up move up
 bindsym Mod1+Shift+Right move right
 
 # Lock
-bindsym Mod1+Ctrl+Delete exec betterlockscreen -l blur 
-bindsym XF86Sleep exec betterlockscreen -l blur && echo mem > /sys/power/state
+bindsym Mod1+Ctrl+Delete exec betterlockscreen -l
+bindsym XF86Sleep exec betterlockscreen -l && echo mem > /sys/power/state
 
 # Screenshots
-bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots/'
-bindsym Mod1+Print exec scrot -u -e 'mv $f ~/Pictures/Screenshots/'
-bindsym Mod1+Shift+Print exec scrot -s -e 'mv $f ~/Pictures/Screenshots/'
+bindsym Print exec scrot -e 'mv $f ~/Bilder/Screenshots/'
+bindsym Mod1+Print exec scrot -u -e 'mv $f ~/Bilder/Screenshots/'
+bindsym Mod1+Shift+Print exec scrot -s -e 'mv $f ~/Bilder/Screenshots/'
 
 # Split in horizontal orientation
 bindsym Mod1+b split h

@@ -51,6 +51,11 @@ interval = 2
 # interval = 300
 
 [[block]]
+block = "net"
+device = "wlp2s0"
+format = "{speed_down}"
+
+[[block]]
 block = "pacman"
 interval = 86400
 format = "{pacman}"
@@ -93,24 +98,20 @@ interval = 12
 
 [[block]]
 block = "networkmanager"
-on_click = "networkmanager_dmenu"
+on_click = ""
 device_format = "{icon} {ap}"
 ap_format = "{ssid}"
 max_ssid_width = 6
 
 [[block]]
 block = "custom"
-# on_click = "sh ~/.config/i3/scripts/.sh"
+# on_click = ""
 command = "sh ~/.config/i3/scripts/calendar.sh"
 json = true
 interval = 60
 
 [[block]]
-block = "custom"
-on_click = "sh ~/.config/i3/scripts/powermenu.sh"
-command = "echo '{\"icon\":\"power-off\", \"state\":\"Idle\", \"text\":\"\"}'"
-json = true
-interval = "once"
-
-# [[block]]
-# block = "kdeconnect"
+block = "battery"
+device = "/sys/class/power_supply/BAT1"
+format = "{percentage}% {time}"
+full_format = "{percentage}% {time}"
