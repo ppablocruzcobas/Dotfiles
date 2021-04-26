@@ -15,7 +15,7 @@ pacman -Syu --needed --noconfirm
 pacman -S yay
 
 # utils installations...
-pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher bat tor nyx rofi yad --needed --noconfirm
+pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher bat tor nyx moreutils --needed --noconfirm
 # lts installations...
 pacman -S clang ctags bash-language-server autopep8 go --needed --noconfirm
 # multimedia installations...
@@ -42,7 +42,7 @@ pacman -S libreoffice-fresh --needed --noconfirm
 
 # PIP
 # dependencies for some albert plugins
-sudo -u $USER pip3 install pycountry tzlocal pytz colour fuzzywuzzy lxml clipboard
+sudo -u $USER pip3 install PyDictionary pycountry tzlocal pytz colour fuzzywuzzy lxml clipboard overrides
 sudo -u $USER pip3 install --user --upgrade secrets requests cookiecutter
 # i3 additional programs
 sudo -u $USER pip3 install autotiling i3-workspace-names-daemon
@@ -54,13 +54,11 @@ sudo -u $USER pip3 install subliminal ffsubsync
 
 # NPM
 npm i -g neovim
-npm i -g create-react-app
 
 
 # GEM
 gem install colorls
 gem install neovim
-gem install solargraph
 
 
 # AUR
