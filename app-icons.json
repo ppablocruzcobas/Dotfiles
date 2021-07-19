@@ -5,6 +5,7 @@
     "xfce4-terminal": "terminal",
     "alacritty": "terminal",
     "thunar": "folder-open",
+    "thunderbird": "thunderbird",
     "audacious": "music",
     "ncmpcpp": "music",
     "mpd": "music",
@@ -23,6 +24,8 @@
     "htop --user=$USER": "tasks",
     "top": "tasks",
     "telegram-desktop": "telegram",
+    "Telegram": "telegram",
+    "tdesktop": "telegram",
     "engrampa": "archive",
     "blueman-manager": "bluetooth",
     "galculator": "calculator",
@@ -32,6 +35,7 @@
     "albert": "search",
     "catfish": "search",
     "spotify": "spotify",
+    "whatsapp-for-linux": "whatsapp",
     "nm-connection-editor": "network-wired",
     "_no_match": "question"
 }

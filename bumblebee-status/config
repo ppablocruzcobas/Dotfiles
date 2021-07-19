@@ -1,0 +1,46 @@
+[core]
+modules = cprogress, ccpu2, csensors, ccpu, cmemory, cpasink, credshift, cbluetooth2, cpacman, cdate, cdunst
+theme = my-theme
+
+[module-parameters]
+
+cprogress.format = {percentage}% @ {speed}
+
+ctraffic.showname = False
+ctraffic.graphlen = 0
+ctraffic.format = {:.1f}
+
+ccpu.left-click = alacritty -e htop
+
+csensors.show_freq = True
+csensors.left-click = alacritty -e htop
+
+cpacman.sum = True
+
+cdate.format = %a,%e. %b %R
+cdate.interval = 60
+cdate.left-click = ~/.config/i3/scripts/calendar.sh
+
+ccpu2.layout = cpu2.coresload
+ccpu2.colored = 1
+ccpu2.left-click = alacritty -e htop
+
+cmemory.format = {used}
+cmemory.left-click = alacritty -e htop
+
+cbrightness.step = 5
+cbrightness.format = {:.0f}
+
+cpasink.percent_change = 5
+cpasink.showbars = 0
+cpasink.limit = 100
+cpasink.internal = 1
+
+cplayerctl.layout = playerctl.song
+
+cprogress.placeholder = 
+
+cthunderbird.home = 
+cthunderbird.inboxes = 
+
+credshift.left-click =

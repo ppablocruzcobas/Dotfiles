@@ -1,0 +1,78 @@
+{
+	"icons": [
+		"awesome-fonts"
+	],
+	"defaults": {
+		"separator": "",
+		"separator-block-width": 8,
+		"fg": "#b2b2b2",
+		"warning": {
+			"fg": "#002b36",
+			"bg": "#b58900"
+		},
+		"critical": {
+			"fg": "#0f242a",
+			"bg": "#ff5555"
+		}
+	},
+	"sensors": {
+		"fg": "#EC541D",
+		"bg": "#1B2224"
+	},
+	"cpu": {
+		"fg": "#EC541D",
+		"bg": "#1B2224"
+	},
+	"cpu2": {},
+	"memory": {
+		"bg": "#0D0D14"
+	},
+	"pasink": {
+		"bg": "#23112D",
+		"warning": {
+			"fg": "#b58900",
+			"bg": "#23112D"
+		},
+		"critical": {
+			"fg": "#ff5555",
+			"bg": "#23112D"
+		}
+	},
+	"redshift": {
+		"bg": "#340A1F"
+	},
+	"bluetooth2": {
+		"bg": "#101824",
+		"warning": {
+			"fg": "#2E9417",
+			"bg": "#101824"
+		},
+		"critical": {
+			"fg": "#ff5555",
+			"bg": "#101824"
+		}
+	},
+	"pacman": {
+		"fg": "#b2b2b2",
+		"bg": "#11222D",
+		"warning": {
+			"fg": "#b58900",
+			"bg": "#11222D"
+		},
+		"critical": {
+			"fg": "#ff5555",
+			"bg": "#11222D"
+		}
+	},
+	"date": {
+		"bg": "#092138"
+	},
+	"dunst": {
+		"bg": "#282A36",
+		"warning": {
+			"fg": "#ff5555",
+			"bg": "#282A36"
+		}
+	},
+	"progress": {}
+}

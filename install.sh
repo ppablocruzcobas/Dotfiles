@@ -15,13 +15,13 @@ pacman -Syu --needed --noconfirm
 pacman -S yay
 
 # utils installations...
-pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher bat tor nyx moreutils --needed --noconfirm
+pacman -S expac nmap npm tldr units ruby rubygems luarocks ncdu exa ripgrep the_silver_searcher bat moreutils --needed --noconfirm
 # lts installations...
 pacman -S clang ctags bash-language-server autopep8 go --needed --noconfirm
 # multimedia installations...
-pacman -S mpv mpd ncmpcpp playerctl youtube-dl ueberzug clipgrab --needed --noconfirm
+pacman -S mpv playerctl youtube-dl ueberzug clipgrab --needed --noconfirm
 # i3 installation...
-pacman -S i3exit i3-gaps i3-lock-color scrot i3-status-rust compton feh xfce4-volumed-pulse lxappearance xclip xsel --needed --noconfirm
+pacman -S i3exit i3-gaps i3-lock-color scrot compton feh xclip xsel --needed --noconfirm
 # general installation...
 pacman -S albert redshift calibre simplescreenrecorder qutebrowser pdfjs zathura zathura-djvu zathura-pdf-poppler --needed --noconfirm
 # science installations...
@@ -50,6 +50,7 @@ sudo -u $USER pip3 install autotiling i3-workspace-names-daemon
 sudo -u $USER pip3 install pynvim neovim-remote
 # extras...
 sudo -u $USER pip3 install subliminal ffsubsync
+sudo -u $USER pip3 install bumblebee-status
 
 
 # NPM
@@ -64,24 +65,18 @@ gem install neovim
 # AUR
 sudo -u $USER yay -S googler --needed --noconfirm
 sudo -u $USER yay -S mendeleydesktop-bundled --needed --noconfirm
-sudo -u $USER yay -S mpdris2 --needed --noconfirm
 sudo -u $USER yay -S stockfish --needed --noconfirm
-sudo -u $USER yay -S zeal --needed --noconfirm
 sudo -u $USER yay -S lazygit --needed --noconfirm
 sudo -u $USER yay -S beamerpresenter --needed --noconfirm
 sudo -u $USER yay -S skypeforlinux-stable-bin --needed --noconfirm
 sudo -u $USER yay -S spotify --needed --noconfirm
-sudo -u $USER yay -S postman-bin --needed --noconfirm
 sudo -u $USER yay -S betterlockscreen --needed --noconfirm
-sudo -u $USER yay -S masterpdfeditor-free --needed --noconfirm
 
 # zinit
 sudo -u $USERsh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
-sudo -u $USER mkdir /home/$USER/.ncmpcpp
 sudo -u $USER mkdir /home/$USER/.config/alacritty
 sudo -u $USER mkdir /home/$USER/.config/qutebrowser
-sudo -u $USER mkdir /home/$USER/.config/mpd
 sudo -u $USER mkdir -p /home/$USER/.config/nvim/autoload
 sudo -u $USER mkdir -p /home/$USER/.config/mpv/scripts
 sudo -u $USER mkdir -p /home/$USER/.config/i3/scripts
@@ -95,14 +90,12 @@ sudo -u $USER mv Dotfiles/zshrc /home/$USER/.zshrc
 sudo -u $USER mv Dotfiles/p10k /home/$USER/.p10k.zsh
 sudo -u $USER mv Dotfiles/alacritty.yml /home/$USER/.config/alacritty/
 sudo -u $USER mv Dotfiles/albert.conf /home/$USER/.config/albert/
-sudo -u $USER mv Dotfiles/mpd.conf /home/$USER/.config/mpd/
-sudo -u $USER mv Dotfiles/ncmpcpp /home/$USER/.ncmpcpp/config
 sudo -u $USER mv Dotfiles/rc.conf /home/$USER/.config/ranger/
 sudo -u $USER mv Dotfiles/config.py /home/$USER/.config/qutebrowser/
-sudo -u $USER mv Dotfiles/i3 /home/$USER/.config/.i3/config
-sudo -u $USER mv Dotfiles/app-icons.json /home/$USER/.config/.i3/
-sudo -u $USER mv Dotfiles/i3status-top.toml /home/$USER/.config/.i3/
-sudo -u $USER mv -r Dotfiles/scripts/ /home/$USER/.config/.i3/
+sudo -u $USER mv Dotfiles/i3 /home/$USER/.config/i3/config
+sudo -u $USER mv Dotfiles/app-icons.json /home/$USER/.config/i3/
+sudo -u $USER mv -r Dotfiles/scripts/ /home/$USER/.config/i3/
+sudo -u $USER mv -r Dotfiles/bumblebee_status/ /home/$USER/.config/bumblebee_status/
 sudo -u $USER mv Dotfiles/snippets.fzf /home/$USER/.snippets.fzf
 rm -Rf Dotfiles/
 

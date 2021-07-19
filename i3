@@ -1,6 +1,3 @@
-# Background
-exec betterlockscreen -w
-
 # Font for window titles.
 font pango:Hack Nerd Font Bold 11
 title_align center
@@ -8,26 +5,32 @@ title_align center
 default_orientation auto
 workspace_layout default
 
-# Colors
-set $back               #282C34
-set $primary            #ABB2BF
-set $secondary          #0FE0C9
-set $black              #282A2E
-set $grey               #3E4452
-set $white              #C5C8C6
+# Class                 border  bground text    indicator child_border
 
-# class                 border   backgr.  text    indicator child_border
-# client.focused          #3E4452  #3E4452  $white  #2e9ef4   #3E4452
-# client.focused_inactive $back    $back    $white  #484e50   $back
-client.unfocused        $back    $back    $grey   #292d2e   $back
-client.urgent           $back    #900000  $white  #900000   #900000
-client.placeholder      $back    #0c0c0c  $white  #000000   #0c0c0c
-client.background       $back
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
-for_window [class="^.*"] border pixel 3
+# client.focused          #4C7899 #285577 #FFFFFF #2E9EF4   #285577
+# client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+# client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+# client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+# client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #F8F8F2
+
+# Border
+for_window [class="^.*"] border pixel 2
+
+# Floating...
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+# Floating for custom apps...
 for_window [title="mpv"] floating enable
 for_window [class="Xed"] floating enable
-# for_window [title="Thunar"] floating enable
 for_window [title="ClipGrab"] floating enable
 for_window [title="Catfish"] floating enable
 for_window [title="Viewnior"] floating enable
@@ -38,13 +41,12 @@ for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable
 for_window [class="Manjaro-hello"] floating enable
-for_window [class="Xfburn"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable
 for_window [class="Pulseeffects"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Telegram"] floating enable
-# for_window [class="libreoffice"] floating enable
+for_window [class="libreoffice"] floating enable
 
 # Redlight at night
 exec --no-startup-id redshift
@@ -52,44 +54,50 @@ exec --no-startup-id redshift
 # Composition
 exec --no-startup-id picom
 
-# Xfce4 services...
+# Theme configuration
+# set $gnome-schema org.gnome.desktop.interface
+# exec_always {
+#     gsettings set $gnome-schema gtk-theme 'Matcha-dark-sea'
+#     gsettings set $gnome-schema icon-theme 'Papirus-Dark-Maia'
+#     gsettings set $gnome-schema cursor-theme 'Simple-and-Soft'
+#     # gsettings set $gnome-schema font-name ''
+# }
+
+# Services...
 exec --no-startup-id thunar --daemon
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xfce4-volumed-pulse
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
-exec --no-startup-id mpd
-exec --no-startup-id mpDris2
+exec --no-startup-id tvolnoti -T dark
+exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 
 # Launcher
 exec --no-startup-id albert
 
-# New mail notification in background...
-exec geary --gapplication-service
-
 # Automatically select best layout for new windows
 exec --no-startup-id autotiling
-
-# Tmux...
-# exec tmux has-session -t $HOST || alacritty -e tmux new -s $HOST &
 
 # Icons on workspaces
 exec --no-startup-id i3-workspace-names-daemon --delimiter " " --no-match-not-show-name --uniq
 
+# Lock screen when idle...
+exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 300 "betterlockscreen -l" ""
+
 # Clean common partition...
-exec ntfsfix /dev/sdc1
+# exec ntfsfix /dev/sdc1
 
 # Remember last visited workspace
 workspace_auto_back_and_forth yes
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec ~/.config/i3/scripts/volume.sh up
+bindsym XF86AudioLowerVolume exec ~/.config/i3/scripts/volume.sh down
+bindsym XF86AudioMute exec exec ~/.config/i3/scripts/volume.sh mute
 
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/brightness.sh up
+bindsym XF86MonBrightnessDown exec ~/.config/i3/scripts/brightness.sh down
+
+# Control players like Spotify...
 bindsym Ctrl+Mod1+p exec playerctl play-pause
 bindsym Ctrl+Mod1+n exec playerctl next
 
@@ -101,24 +109,23 @@ set $right l
 
 # i3-gaps stuff
 gaps inner 8
-gaps outer 8
+gaps outer 4
 
 # Use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
 
 # Start a terminal
 bindsym Mod1+Return exec alacritty
+
 # Toggle Albert
 bindsym Mod1+F2 exec albert toggle
 
+# Shortcut for some apps...
 bindsym Mod4+e exec thunar
-bindsym Mod4+b exec brave
-bindsym Mod4+i exec qutebrowser -r isu
-bindsym Mod4+w exec qutebrowser -r default
+bindsym Mod4+q exec qutebrowser -r default
 bindsym Mod4+t exec /opt/tdesktop/Telegram
 bindsym Mod4+s exec Skype
-bindsym Mod4+m exec geary
-bindsym Mod4+a exec alacritty -t ncmpcpp -e ncmpcpp
+bindsym Mod4+w exec whatsapp-for-linux
 bindsym Mod4+h exec alacritty -t htop -e htop
 bindsym Mod4+n exec alacritty -t nvim -e nvim
 bindsym Mod4+c exec alacritty -t mc -e mc -u
@@ -126,8 +133,8 @@ bindsym Mod4+c exec alacritty -t mc -e mc -u
 # Kill focused window
 bindsym Mod1+F4 kill
 
-# Show Exit menu
-bindsym Mod4+F4 exec ~/.config/i3/scripts/powermenu.sh
+# Jump to urgent windows...
+bindsym Mod1+u [urgent=latest] focus
 
 # alternatively, you can use the cursor keys:
 bindsym Mod1+Left  focus left
@@ -165,6 +172,9 @@ bindsym Mod1+v split v
 # Enter fullscreen mode for the focused container
 bindsym Mod1+f fullscreen toggle
 
+# Master-stack...
+bindsym Mod1+a exec "i3-msg \\"move left; focus up; move right; focus left\\""
+
 # Change container layout (stacked, tabbed, toggle split)
 bindsym Mod1+s layout stacking
 bindsym Mod1+w layout tabbed
@@ -174,7 +184,7 @@ bindsym Mod1+e layout toggle split
 bindsym Mod4+Tab workspace next
 bindsym Mod4+Shift+Tab workspace prev
 
-# Navigate workspaces
+# Navigate apps...
 bindsym Mod1+Tab exec i3-alt-tab --next
 bindsym Mod1+Shift+Tab exec i3-alt-tab --prev
 
@@ -186,7 +196,7 @@ bindsym Mod1+Shift+space floating toggle
 bindsym Mod1+space focus mode_toggle
 
 # Focus the parent container
-bindsym Mod1+a focus parent
+bindsym Mod1+p focus parent
 
 # Move the currently focused window to the scratchpad
 bindsym Mod1+Shift+minus move scratchpad
@@ -279,14 +289,24 @@ bar {
     tray_output none
     height 28
     font pango:DejaVu Sans Mono, AwesomeFont Regular 13
-    status_command /usr/bin/i3status-rs $HOME/.config/i3/i3status-top.toml
+    # status_command /usr/bin/i3status-rs $HOME/.config/i3/i3status-top.toml
+    status_command ~/.local/bin/bumblebee-status #-a playerctl
+
     colors {
-        separator #002b36
-        background #002b36
-        statusline #002b36
-        focused_workspace #bfbfbf #268bd2 #002b36
-        active_workspace #bfbfbf #268bd2 #002b36
-        inactive_workspace #666666 #002b36 #839496
-        urgent_workspace #666666 #750000 #f9f9f9
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+
+        # focused_workspace  #4C7899 #285577 #FFFFFF
+        # active_workspace   #333333 #222222 #FFFFFF
+        # inactive_workspace #333333 #222222 #888888
+        # urgent_workspace   #2F343A #900000 #FFFFFF
+        # binding_mode       #2F343A #900000 #FFFFFF
     }
 }
